@@ -1,0 +1,69 @@
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("EPO setup")
+root.geometry("400x300")  # Set window size
+
+# Create the main content area
+main_label = tk.Label(root, text="Welcome to EPO", font=("Arial", 20))
+main_label.pack(pady=20)
+
+# Create the taskbar frame
+taskbar = tk.Frame(root, bg="lightblue", height=70)
+taskbar.pack(side="bottom", fill="x")
+
+# Function to show new buttons when clicking Settings
+def show_settings_buttons():
+    # Clear existing buttons
+    for widget in taskbar.winfo_children():
+        widget.destroy()
+
+    # Add new settings-related buttons
+    btn_network = tk.Button(taskbar, text="Network")
+    btn_network.pack(side="left", padx=5, pady=5)
+
+    btn_display = tk.Button(taskbar, text="Display")
+    btn_display.pack(side="left", padx=5, pady=5)
+
+    btn_sound = tk.Button(taskbar, text="Sound")
+    btn_sound.pack(side="left", padx=5, pady=5)
+
+    btn_security = tk.Button(taskbar, text="Security")
+    btn_security.pack(side="left", padx=5, pady=5)
+
+    btn_update = tk.Button(taskbar, text="Updates")
+    btn_update.pack(side="left", padx=5, pady=5)
+
+# Function to restore original buttons
+def show_default_buttons():
+    # Clear existing buttons
+    for widget in taskbar.winfo_children():
+        widget.destroy()
+
+    btn1 = tk.Button(taskbar, text="Home", command=show_default_buttons)
+    btn1.pack(side="left", padx=5, pady=5)
+
+    btn2 = tk.Button(taskbar, text="Settings", command=show_settings_buttons)  # Triggers new buttons
+    btn2.pack(side="left", padx=5, pady=5)
+
+    btn3 = tk.Button(taskbar, text="Setup")
+    btn3.pack(side="left", padx=5, pady=5)
+
+    btn4 = tk.Button(taskbar, text="Browser")
+    btn4.pack(side="left", padx=5, pady=5)
+
+    btn5 = tk.Button(taskbar, text="AI")
+    btn5.pack(side="left", padx=5, pady=5)
+
+    btn6 = tk.Button(taskbar, text="Power off")
+    btn6.pack(side="right", padx=5, pady=5)
+
+    btn_exit = tk.Button(taskbar, text="Exit", command=root.quit)
+    btn_exit.pack(side="right", padx=5, pady=5)
+
+# Add default buttons initially
+show_default_buttons()
+
+# Run the application
+root.mainloop()
